@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace FirstPersonMod
 {
-    [BepInPlugin("de.kaleidox.dsp.fpm" + Strings.Channel, Strings.Name, Strings.Version)]
+    [BepInPlugin("de.kaleidox.dsp.fpm", Strings.Name, Strings.Version)]
     public class FirstPersonMod : BaseUnityPlugin
     {
         private Harmony _harmony;
