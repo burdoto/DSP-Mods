@@ -95,7 +95,7 @@ namespace FirstPersonMod
     public static class Strings
     {
         public const string Name = "FirstPerson";
-        public const string Version = "2.4.0";
+        public const string Version = "0.0.1";
         public const string LogPrefix = "[" + Name + "]";
     }
 }
