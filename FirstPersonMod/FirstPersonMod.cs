@@ -10,24 +10,24 @@ namespace FirstPersonMod
     {
         private Harmony _harmony;
         
-        private void Awake()
+        public void Awake()
         {
             _harmony = new Harmony(typeof(FirstPersonMod).FullName);
         }
 
-        private void Start()
+        public void Start()
         {
             _harmony.PatchAll(typeof(FirstPersonMod));
             FirstPersonDebug.Log("Started!");
         }
 
         [HarmonyPatch(typeof(EasyCamera), "UserInput"), HarmonyPostfix]
-        private void CameraUserInputPostfix(EasyCamera __instance)
+        public void CameraUserInputPostfix(EasyCamera __instance)
         {
             __instance.distance = -10;
         }
 
-        private void Reset()
+        public void Reset()
         {
             _harmony.UnpatchAll();
         }
@@ -68,9 +68,8 @@ namespace FirstPersonMod
 
     public static class Strings
     {
-        public const string Channel = "Alpha";
-        public const string Name = "OrbitalMiner" + Channel;
-        public const string Version = "2.4.0" + Channel;
+        public const string Name = "FirstPerson";
+        public const string Version = "2.4.0";
         public const string LogPrefix = "[" + Name + "]";
     }
 }
