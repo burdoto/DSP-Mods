@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Reflection;
 using BepInEx;
 using HarmonyLib;
 using UnityEngine;
@@ -12,6 +10,8 @@ namespace FirstPersonMod
     public class FirstPersonMod : BaseUnityPlugin
     {
         private static Player Player => GameMain.data?.mainPlayer;
+        private static bool _active;
+        private static float _modifier = 1.3f;
         private Harmony _harmony;
 
         public void Awake()
@@ -25,10 +25,20 @@ namespace FirstPersonMod
             FirstPersonDebug.Log("Started!");
         }
 
+        public void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.F5))
+                _active = !_active;
+            if (Input.GetKeyDown(KeyCode.F6) && _modifier > 1.09)
+                _modifier -= 0.05f;
+            if (Input.GetKeyDown(KeyCode.F7) && _modifier < 4.01)
+                _modifier += 0.05f;
+        }
+
         [HarmonyPatch(typeof(GameCamera), "LateUpdate"), HarmonyPostfix]
         public static void GameCameraLateUpdatePostfix(GameCamera __instance)
         {
-            if (Player == null)
+            if (!_active || Player == null)
                 return;
             var cam = GameCamera.main;
             var camera = cam.transform;
@@ -38,7 +48,8 @@ namespace FirstPersonMod
             var position = player.position;
             var rotation = player.rotation;
             FirstPersonDebug.LogVerbose($"Player pos,rot,fwd: {position} ; {rotation} ; {fwd}");
-            camera.position = position + up.normalized * 7;
+            camera.position = position + up.normalized * (1.5f * (_modifier * 5));
+            cam.fieldOfView = 160 * (_modifier * 0.3f);
             //camera.rotation = rotation;
         }
 
