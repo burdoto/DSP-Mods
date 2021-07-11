@@ -22,4 +22,9 @@
       </Reference>
     </ItemGroup>
 
+    <PropertyGroup>
+        <PostBuildEvent>
+            copy $(TargetPath)FirstPersonMod.dll "C:\dev\dyson\deploy\$(TargetFileName)"
+        </PostBuildEvent>
+    </PropertyGroup>
 </Project>
