@@ -1,16 +1,19 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Reflection;
 using BepInEx;
 using HarmonyLib;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace FirstPersonMod
 {
     [BepInPlugin("de.kaleidox.dsp.fpm", Strings.Name, Strings.Version)]
     public class FirstPersonMod : BaseUnityPlugin
     {
-        private Harmony _harmony;
         private static Player Player => GameMain.data?.mainPlayer;
-        
+        private Harmony _harmony;
+
         public void Awake()
         {
             _harmony = new Harmony(typeof(FirstPersonMod).FullName);
@@ -20,12 +23,6 @@ namespace FirstPersonMod
         {
             _harmony.PatchAll(typeof(FirstPersonMod));
             FirstPersonDebug.Log("Started!");
-        }
-
-        [HarmonyPatch(typeof(EasyCamera), "UserInput"), HarmonyPostfix]
-        public static void EasyCameraDisableScrolling(EasyCamera __instance)
-        {
-            __instance.sens = 0;
         }
 
         [HarmonyPatch(typeof(GameCamera), "LateUpdate"), HarmonyPostfix]
@@ -42,7 +39,6 @@ namespace FirstPersonMod
             var rotation = player.rotation;
             FirstPersonDebug.LogVerbose($"Player pos,rot,fwd: {position} ; {rotation} ; {fwd}");
             camera.position = position + up.normalized * 7;
-            cam.fieldOfView = 75;
             //camera.rotation = rotation;
         }
 
