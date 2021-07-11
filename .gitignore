@@ -14,6 +14,4 @@ bin/
 obj/
 
 .idea/
-!QOL-MultiBuild.sln
-!QOL-BetterStats.sln
-!QOL-RailgunsRetargeting.sln
+!DSP-Mods.sln
