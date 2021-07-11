@@ -9,6 +9,7 @@ namespace FirstPersonMod
     public class FirstPersonMod : BaseUnityPlugin
     {
         private Harmony _harmony;
+        private static Player Player => GameMain.data?.mainPlayer;
         
         public void Awake()
         {
@@ -22,9 +23,27 @@ namespace FirstPersonMod
         }
 
         [HarmonyPatch(typeof(EasyCamera), "UserInput"), HarmonyPostfix]
-        public void CameraUserInputPostfix(EasyCamera __instance)
+        public static void EasyCameraDisableScrolling(EasyCamera __instance)
         {
-            __instance.distance = -10;
+            __instance.sens = 0;
+        }
+
+        [HarmonyPatch(typeof(GameCamera), "LateUpdate"), HarmonyPostfix]
+        public static void GameCameraLateUpdatePostfix(GameCamera __instance)
+        {
+            if (Player == null)
+                return;
+            var cam = GameCamera.main;
+            var camera = cam.transform;
+            var player = Player.transform;
+            var up = player.up;
+            var fwd = player.forward;
+            var position = player.position;
+            var rotation = player.rotation;
+            FirstPersonDebug.LogVerbose($"Player pos,rot,fwd: {position} ; {rotation} ; {fwd}");
+            camera.position = position + up.normalized * 7;
+            cam.fieldOfView = 75;
+            //camera.rotation = rotation;
         }
 
         public void Reset()
