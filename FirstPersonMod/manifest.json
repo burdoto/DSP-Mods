@@ -1,0 +1,7 @@
+{
+    "name": "DSP_FirstPersonView",
+    "description": "A mod to place the camera directly over Icarus",
+    "version_number": "0.0.1",
+    "dependencies": [],
+    "website_url": "https://github.com/burdoto/DSP-Mods/tree/master/FirstPersonMod"
+}
