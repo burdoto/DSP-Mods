@@ -1,0 +1,3 @@
+[submodule "dsp-streamdeck"]
+	path = dsp-streamdeck
+	url = https://github.com/burdoto/dsp-streamdeck
