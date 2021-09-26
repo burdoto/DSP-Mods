@@ -1,33 +1,27 @@
 ﻿using System;
 using BepInEx;
 using BepInEx.VRGIN;
-using BepInEx.VRGIN.Core;
 using UnityEngine;
 using VRGIN.Controls.Speech;
 using VRGIN.Core;
 using VRGIN.Visuals;
 
-namespace DSP.VRGIN
-{
-    [BepInPlugin(VRCore.ModGuid_Context, "DSP Context Mappings for VRGIN", VRCore.Version)]
-    public class DspVrContextProvider : BaseUnityPlugin
-    {
-        private void Awake()
-        {
-            VRCore.VrContextType = typeof(DspVrContext);
-            VRCore.GameInterpreterFactory = ctx => VRManager.Create<DspGameInterpreter>(ctx);
-        }
-    }
+namespace DSP.VRGIN {
 
     public sealed class DspVrContext : IVRManagerContext
     {
+        public DspVrContext(VRSettings settings)
+        {
+            Settings = settings;
+        }
+
         public string GuiLayer { get; } = "UIRoot/Overlay Canvas";
         public string UILayer { get; } = "UIRoot/Overlay Canvas/In Game";
         public int UILayerMask { get; } = 0;
         public int IgnoreMask { get; } = 0;
         public Color PrimaryColor { get; } = Color.cyan;
         public IMaterialPalette Materials { get; } = new DefaultMaterialPalette();
-        public VRSettings Settings { get; } = VRCore.LoadVrSettings();
+        public VRSettings Settings { get; }
         public string InvisibleLayer { get; } = string.Empty;
         public bool SimulateCursor { get; } = true;
         public bool GUIAlternativeSortingMode { get; } = false;

@@ -8,8 +8,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BepInEx.VRGIN", "..\..\..\.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VRGIN", "..\..\..\..\..\..\dev\vr\VRGIN\VRGIN\VRGIN.csproj", "{22788A2C-7695-4A6A-A9F0-115AB9A05FD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BepInEx.VRGIN.Core", "..\..\..\..\..\..\dev\vr\BepInEx.VRGIN\BepInEx.VRGIN.Core\BepInEx.VRGIN.Core.csproj", "{4301CF36-911F-4D5E-8C1C-CF83940C3279}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,9 +30,5 @@ Global
 		{22788A2C-7695-4A6A-A9F0-115AB9A05FD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22788A2C-7695-4A6A-A9F0-115AB9A05FD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22788A2C-7695-4A6A-A9F0-115AB9A05FD4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4301CF36-911F-4D5E-8C1C-CF83940C3279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4301CF36-911F-4D5E-8C1C-CF83940C3279}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4301CF36-911F-4D5E-8C1C-CF83940C3279}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4301CF36-911F-4D5E-8C1C-CF83940C3279}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
