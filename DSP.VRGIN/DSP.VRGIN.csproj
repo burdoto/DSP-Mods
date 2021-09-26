@@ -37,4 +37,8 @@
       </Reference>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\..\..\..\..\dev\vr\BepInEx.VRGIN\BepInEx.VRGIN\BepInEx.VRGIN.csproj" />
+    </ItemGroup>
+
 </Project>
