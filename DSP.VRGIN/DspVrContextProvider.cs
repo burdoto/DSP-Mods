@@ -1,5 +1,6 @@
 ﻿using System;
 using BepInEx;
+using BepInEx.VRGIN;
 using BepInEx.VRGIN.Core;
 using UnityEngine;
 using VRGIN.Core;
@@ -7,11 +8,9 @@ using VRGIN.Visuals;
 
 namespace DSP.VRGIN
 {
-    [BepInPlugin("BepInEx.VRGIN.Context", "DSP Context Mappings for VRGIN", Version)]
+    [BepInPlugin(VRCore.ModGuid_Context, "DSP Context Mappings for VRGIN", VRCore.Version)]
     public class DspVrContextProvider : BaseUnityPlugin
     {
-        public const string Version = "0.0.1";
-
         private void Awake()
         {
             VRCore.VrContextType = typeof(DspVrContext);
