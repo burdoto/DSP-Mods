@@ -10,7 +10,8 @@ namespace DSP.VRGIN
     {
         public const string ModGuid = "DSP.VRGIN";
         public const string Version = "0.0.1";
-        public override Type GetVrContextType() => typeof(DspVrContext);
+
+        public override IVRManagerContext CreateVRContext() => new DspVrContext(Settings);
 
         public override string GetPathPrefix() => "";
 
